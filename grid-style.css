@@ -1,0 +1,119 @@
+/* =========================================================
+   GRID LAYOUT (mobile-first)
+   ========================================================= */
+
+/* ---------- VARIABLES ---------- */
+:root {
+  --gap: 1rem;
+  --left-w: 220px;
+  --right-w: 260px;
+}
+
+@media (min-width: 40em) { :root { --gap: 1.25rem; } }   /* tablet */
+@media (min-width: 60em) { :root { --gap: 1.5rem; } }    /* laptop */
+@media (min-width: 75em) { :root { --left-w: 240px; --right-w: 300px; } } /* desktop */
+
+/* ---------- PAGE ---------- */
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ---------- HEADER ---------- */
+.site-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--gap);
+}
+.logo { justify-self: start; }
+.header-actions {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---------- NAV ---------- */
+.site-nav ul {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: start;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- MAIN GRID ---------- */
+/* Mobile: single column, main content first */
+.content-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "main"
+    "left"
+    "right";
+  gap: var(--gap);
+}
+
+.main-content  { grid-area: main; }
+.sidebar-left  { grid-area: left; }
+.sidebar-right { grid-area: right; }
+
+/* Tablet: main on top, sidebars side by side */
+@media (min-width: 40em) {
+  .content-area {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "main main"
+      "left right";
+  }
+}
+
+/* Laptop: left sidebar + main, right sidebar underneath */
+@media (min-width: 60em) {
+  .content-area {
+    grid-template-columns: var(--left-w) minmax(0, 1fr);
+    grid-template-areas:
+      "left main"
+      "right right";
+  }
+}
+
+/* Desktop: three columns */
+@media (min-width: 75em) {
+  .content-area {
+    grid-template-columns: var(--left-w) minmax(0, 1fr) var(--right-w);
+    grid-template-areas: "left main right";
+  }
+}
+
+/* ---------- CARDS ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  gap: var(--gap);
+}
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.card__link {
+  align-self: end;
+  justify-self: start;
+}
+
+/* ---------- FOOTER ---------- */
+.footer-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* stacked on mobile */
+  gap: var(--gap);
+}
+@media (min-width: 40em) {
+  .footer-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
