@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Shelf | Flexbox (Level 4: Holy Grail)</title>
+
+  <!-- Shared look and feel (colours, type, components): no layout-engine code -->
+  <link rel="stylesheet" href="base.css">
+  <!-- Layout only: Flexbox version -->
+  <link rel="stylesheet" href="flexbox-style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="page" data-left="expanded" data-right="expanded">
+
+    <header class="site-header">
+      <a class="logo" href="#">Open Shelf</a>
+      <div class="header-actions">
+        <!-- <a class="layout-switch" href="index-grid.html">Switch to Grid</a> -->
+        <details class="user-menu">
+          <summary>Account</summary>
+          <ul class="user-menu__list">
+            <li><a href="#">My loans</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Sign out</a></li>
+          </ul>
+        </details>
+      </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#" aria-current="page">Home</a></li>
+        <li><a href="#">Catalogue</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- Source order: main first, sidebars after (classic Holy Grail).
+         Flexbox restores the visual order with `order`; Grid uses named areas. -->
+    <div class="content-area">
+
+      <main class="main-content" id="main">
+        <h1>New on the shelves</h1>
+        <p class="lead">Reviews, reading lists and news from your neighbourhood library.</p>
+
+        <section class="cards-section" aria-labelledby="cards-title">
+          <h2 id="cards-title">Latest articles</h2>
+          <div class="cards">
+            <article class="card">
+              <h3 class="card__title">Ten novels set by the sea</h3>
+              <p class="card__text">Salt air, ferries and long summers: our staff picks for the next rainy weekend.</p>
+              <a class="card__link" href="#">Read the list</a>
+            </article>
+            <article class="card">
+              <h3 class="card__title">Beginner's guide to birdwatching</h3>
+              <p class="card__text">Field guides, free binocular loans and a walking group that meets on Saturdays.</p>
+              <a class="card__link" href="#">See the guides</a>
+            </article>
+            <article class="card">
+              <h3 class="card__title">Local history archive goes online</h3>
+              <p class="card__text">Four thousand photographs from the town's past are now searchable from home.</p>
+              <a class="card__link" href="#">Browse the archive</a>
+            </article>
+            <article class="card">
+              <h3 class="card__title">Homework help, every weekday</h3>
+              <p class="card__text">Volunteer tutors are in the reading room from 3 pm. No booking needed.</p>
+              <a class="card__link" href="#">Find a tutor</a>
+            </article>
+            <article class="card">
+              <h3 class="card__title">Language exchange evenings</h3>
+              <p class="card__text">Practise Kinyarwanda, French, English or Swahili over tea with fellow learners.</p>
+              <a class="card__link" href="#">Join an evening</a>
+            </article>
+            <article class="card">
+              <h3 class="card__title">Repair cafe returns in May</h3>
+              <p class="card__text">Bring a lamp, a bike or a torn jacket. Volunteers will help you fix it.</p>
+              <a class="card__link" href="#">Reserve a slot</a>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar sidebar-left" aria-label="Browse by topic">
+        <div class="sidebar__bar">
+          <h2 class="sidebar__title">Topics</h2>
+          <button class="sidebar__toggle" type="button" data-side="left"
+                  aria-expanded="true" aria-controls="left-body"
+                  aria-label="Toggle topics sidebar"></button>
+        </div>
+        <div class="sidebar__body" id="left-body">
+          <ul class="link-list">
+            <li><a href="#">Fiction</a></li>
+            <li><a href="#">Science and nature</a></li>
+            <li><a href="#">Local history</a></li>
+            <li><a href="#">Children's books</a></li>
+            <li><a href="#">Languages</a></li>
+            <li><a href="#">Audiobooks</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <aside class="sidebar sidebar-right" aria-label="Library information">
+        <div class="sidebar__bar">
+          <h2 class="sidebar__title">This week</h2>
+          <button class="sidebar__toggle" type="button" data-side="right"
+                  aria-expanded="true" aria-controls="right-body"
+                  aria-label="Toggle this week sidebar"></button>
+        </div>
+        <div class="sidebar__body" id="right-body">
+          <ul class="link-list">
+            <li><a href="#">Mon: Story time, 10:00</a></li>
+            <li><a href="#">Wed: Book club, 18:30</a></li>
+            <li><a href="#">Fri: Chess for all ages, 16:00</a></li>
+            <li><a href="#">Sat: Birdwatching walk, 07:30</a></li>
+          </ul>
+          <p class="note">Open Monday to Saturday, 08:00 to 18:00.</p>
+        </div>
+      </aside>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-columns">
+        <section class="footer-col" aria-labelledby="footer-explore">
+          <h2 id="footer-explore">Explore</h2>
+          <ul>
+            <li><a href="#">Catalogue</a></li>
+            <li><a href="#">New arrivals</a></li>
+            <li><a href="#">Reading lists</a></li>
+          </ul>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-visit">
+          <h2 id="footer-visit">Visit</h2>
+          <ul>
+            <li><a href="#">Opening hours</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Room hire</a></li>
+          </ul>
+        </section>
+        <section class="footer-col" aria-labelledby="footer-help">
+          <h2 id="footer-help">Get involved</h2>
+          <ul>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Donate books</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </section>
+      </div>
+      <p class="footer-note">&copy; 2026 Open Shelf community library. Course project.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Collapse / expand sidebars: toggles one data attribute that CSS reads.
+    const page = document.querySelector('.page');
+    document.querySelectorAll('.sidebar__toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        page.dataset[btn.dataset.side] = isOpen ? 'collapsed' : 'expanded';
+      });
+    });
+
+  </script>
+</body>
+</html>
