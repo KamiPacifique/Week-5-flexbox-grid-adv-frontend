@@ -1,0 +1,103 @@
+/* =========================================================
+   FLEXBOX LAYOUT: ONE-DIMENSIONAL, COLUMNS ONLY
+   Every flex container uses flex-direction: column, so
+   everything stacks top to bottom at every screen size.
+   Breakpoints only change spacing and max width.
+   ========================================================= */
+
+/* ---------- VARIABLES ---------- */
+:root {
+  --gap: 1rem;
+  --page-max: 100%;
+}
+
+@media (min-width: 40em) { :root { --gap: 1.25rem; --page-max: 40rem; } }  /* tablet */
+@media (min-width: 60em) { :root { --gap: 1.5rem;  --page-max: 52rem; } }  /* laptop */
+@media (min-width: 75em) { :root { --gap: 1.75rem; --page-max: 64rem; } }  /* desktop */
+
+/* ---------- PAGE ---------- */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+.page > main { flex: 1 0 auto; }   /* keeps footer at the bottom */
+
+/* ---------- HEADER ---------- */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ---------- NAVIGATION ---------- */
+.site-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- CONTENT AREA ---------- */
+/* Order: main, then left sidebar, then right sidebar */
+.content-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  width: 100%;
+}
+.main-content,
+.sidebar-left,
+.sidebar-right {
+  width: 100%;
+  min-width: 0;
+}
+.main-content  { order: 1; }
+.sidebar-left  { order: 2; }
+.sidebar-right { order: 3; }
+
+/* ---------- MAIN CONTENT: NEW ON THE SHELVES ---------- */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.main-content > * { flex: 0 0 auto; width: 100%; min-width: 0; }
+
+/* ---------- CARDS ---------- */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.card__link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* ---------- FOOTER ---------- */
+.footer-columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.footer-col { flex: 0 0 auto; }
+
+/* ---------- MOTION ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .content-area { transition: gap 0.25s ease; }
+}
